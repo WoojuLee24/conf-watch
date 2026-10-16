@@ -1,0 +1,26 @@
+# 소스는 볼륨으로 마운트 → 코드 수정 후 재빌드 없이 바로 실행
+#   docker compose run --rm preview   # 메일/상태 갱신 없이 보고서만 (docs/report.html)
+#   docker compose run --rm verify    # 검증 모드
+#   docker compose run --rm test      # 단위 테스트
+#   docker compose run --rm run       # 실제 실행 (.env 의 SMTP 설정으로 메일 발송)
+x-base: &base
+  build: .
+  image: conf-watch:dev
+  user: "${UID:-1000}:${GID:-1000}"
+  volumes: [".:/app"]
+  environment:
+    CONFWATCH_CACHE: /app/.cache/http
+services:
+  preview:
+    <<: *base
+    command: ["run", "--no-mail", "--no-state"]
+  run:
+    <<: *base
+    env_file: [{path: .env, required: false}]
+    command: ["run"]
+  verify:
+    <<: *base
+    command: ["verify"]
+  test:
+    <<: *base
+    entrypoint: ["pytest", "-q", "tests"]

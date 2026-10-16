@@ -1,0 +1,64 @@
+name: weekly
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"        # 매주 월요일 00:00 UTC = 09:00 KST
+  push:
+    branches: [main]
+    paths: ["confwatch/**", "config.yaml", "verify/**", "tests/**", "Dockerfile", "requirements.txt"]
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "run = 수집+메일, verify = 검증 모드"
+        type: choice
+        options: [run, verify]
+        default: run
+
+permissions:
+  contents: write              # state/seen.json, docs/ 커밋
+
+concurrency:
+  group: conf-watch
+  cancel-in-progress: false
+
+jobs:
+  run:
+    if: github.event_name == 'schedule' || inputs.mode == 'run'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t conf-watch .
+      - name: Collect, report, mail
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+        run: |
+          docker run --rm -v "$PWD:/app" -u "$(id -u):$(id -g)" \
+            -e SMTP_HOST -e SMTP_PORT -e SMTP_USER -e SMTP_PASS -e MAIL_TO -e MAIL_FROM \
+            conf-watch run
+      - name: Commit state
+        run: |
+          git config user.name "conf-watch bot"
+          git config user.email "conf-watch@users.noreply.github.com"
+          git add state docs
+          git diff --cached --quiet || git commit -m "weekly: $(date -u +%F)"
+          git push
+
+  verify:
+    if: github.event_name == 'push' || inputs.mode == 'verify'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t conf-watch .
+      - name: Unit tests
+        run: docker run --rm --entrypoint pytest conf-watch -q tests
+      - name: Verify (known past / ongoing challenges)
+        run: docker run --rm conf-watch verify

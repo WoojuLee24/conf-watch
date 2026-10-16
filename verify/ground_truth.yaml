@@ -1,0 +1,44 @@
+# 검증 모드 정답 세트
+#   python -m confwatch verify   (docker compose run --rm verify)
+#
+# 각 항목은 실제 학회 공식 workshop/competition 페이지 또는 EvalAI 에서 확인한 challenge.
+#   expect   : 탐지 결과의 url / 제목 / 플랫폼 링크 중 하나에 맞아야 하는 정규식
+#   keywords : 이 케이스에 쓸 검색어 (없으면 config.yaml 의 keywords)
+#   status   : past(과거) / ongoing(2026-10 기준 진행 중·예정)
+# 학회 사이트가 내려가거나 개편되면 FAIL 이 날 수 있다 → 그때는 config 의 seeds 를 고친다.
+
+deadlines:   # ccf-deadlines 원문을 손으로 UTC 변환한 값
+  - {conf: cvpr, year: 2026, kind: deadline, utc_date: "2025-11-14"}   # 2025-11-13 23:59:59 UTC-12
+  - {conf: cvpr, year: 2027, kind: deadline, utc_date: "2026-11-17"}   # 2026-11-16 23:59:59 UTC-12
+  - {conf: iclr, year: 2027, kind: deadline, utc_date: "2026-09-26"}   # 2026-09-25 23:59:59 AoE
+  - {conf: icra, year: 2027, kind: deadline, utc_date: "2026-09-17"}   # 2026-09-16 23:59:59 UTC-8
+  - {conf: nips, year: 2026, kind: deadline, utc_date: "2026-05-07"}   # 2026-05-07 11:59:00 UTC+0
+  - {conf: rss, year: 2027, kind: deadline, utc_date: "2026-12-05"}    # 2026-12-04 23:59:59 AoE
+
+challenges:
+  # ---------------- 과거 ----------------
+  - {name: "CVPR25 Embodied AI Workshop", conf: cvpr, year: 2025, expect: "embodied-ai\\.org/cvpr2025", status: past}
+  - {name: "CVPR25 AVA Instruction challenge (EvalAI)", conf: cvpr, year: 2025, expect: "challenge-page/2491", status: past}
+  - {name: "CVPR25 NTIRE (사용자 검색어)", conf: cvpr, year: 2025, expect: "cvlai\\.net/ntire/2025", keywords: [super-resolution], status: past}
+  - {name: "ICCV25 CLVL Reliable VQA", conf: iccv, year: 2025, expect: "iccv-clvl", status: past}
+  - {name: "ECCV24 Map-free Visual Relocalization", conf: eccv, year: 2024, expect: "map-free-workshop", status: past}
+  - {name: "AAAI26 Consistency Video Generation Competition", conf: aaai, year: 2026, expect: "aaai26-cvm", keywords: [video generation], status: past}
+  - {name: "ICLR26 GRAM competition track", conf: iclr, year: 2026, expect: "gram-workshop", keywords: [airflow], status: past}
+  - {name: "ICML26 Efficient Multimodal QA competition", conf: icml, year: 2026, expect: "qanta-org\\.github\\.io/competition", keywords: [question answering], status: past}
+  - {name: "NeurIPS25 MyoChallenge", conf: nips, year: 2025, expect: "myosuite", status: past}
+  - {name: "NeurIPS25 Embodied Agent Interface (EvalAI)", conf: nips, year: 2025, expect: "challenge-page/2621", status: past}
+  - {name: "ICRA25 BARN Challenge", conf: icra, year: 2025, expect: "BARN_Challenge25", status: past}
+  - {name: "ICRA26 AgiBot World Challenge", conf: icra, year: 2026, expect: "agibot-world\\.com/challenge2026", status: past}
+  - {name: "ICRA26 BARN Challenge", conf: icra, year: 2026, expect: "BARN_Challenge26", status: past}
+  - {name: "IROS25 RoboSense SocialNav (EvalAI)", conf: iros, year: 2025, expect: "challenge-page/2557", status: past}
+  - {name: "IROS26 Earth Rover Challenge", conf: iros, year: 2026, expect: "earth-rover-challenge", status: past}
+  - {name: "IROS26 ROCO Assembly Challenge", conf: iros, year: 2026, expect: "rocochallenge", status: past}
+  - {name: "CoRL25 RoboArena Challenge", conf: corl, year: 2025, expect: "corl-roboarena", status: past}
+  - {name: "CVPR26 GigaBrain Challenge (VLA)", conf: cvpr, year: 2026, expect: "GigaBrain-Challenge-2026", status: past}
+  - {name: "CVPR26 EmbodiedBench Challenge (EvalAI)", conf: cvpr, year: 2026, expect: "challenge-page/2670", status: past}
+  - {name: "ECCV26 OpenSUN3D Workshop and Challenge", conf: eccv, year: 2026, expect: "opensun3d", status: past}
+
+  # ---------------- 진행 중 / 예정 (2026-10 기준) ----------------
+  - {name: "NeurIPS26 RoboSynChallenge (manipulation)", conf: nips, year: 2026, expect: "RoboSynChallenge", status: ongoing}
+  - {name: "NeurIPS26 QuantiPhy Challenge (사용자 검색어)", conf: nips, year: 2026, expect: "QuantiPhy", keywords: [physical reasoning], status: ongoing}
+  - {name: "CoRL26 UMI Olympics", conf: corl, year: 2026, expect: "umi-olympics", status: ongoing}

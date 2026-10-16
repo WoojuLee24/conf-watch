@@ -1,0 +1,110 @@
+# conf-watch 설정 파일
+# 이 파일만 고치면 검색어/학회/메일 대상이 바뀐다. (코드 수정 불필요)
+
+# ---------------------------------------------------------------
+# 1. 검색어
+#   - challenge 페이지 본문(제목+소개+워크숍 사이트)에 하나라도 있으면 매칭
+#   - 대소문자 무시, 단어 경계 기준. "re:" 로 시작하면 정규식
+#   - 비워두면([]) 대상 학회의 모든 challenge 를 보고
+# ---------------------------------------------------------------
+keywords:
+  - vision-and-language navigation
+  - vision-language navigation
+  - VLN
+  - vision-language-action
+  - VLA
+  - embodied
+  - "re:\\bnavigation\\b"
+  - manipulation
+
+# challenge 로 판단하는 단어 (이 중 하나 + 검색어가 같이 있어야 보고)
+challenge_terms:
+  - challenge
+  - competition
+  - leaderboard
+
+# ---------------------------------------------------------------
+# 2. 대상 학회 (마감일 + challenge 모두 이 목록 한정)
+#   key  : ccf-deadlines 의 파일명 (conference/AI/<key>.yml)
+#   seeds: workshop/competition 목록 페이지. {year}, {yy} 치환
+#          ccf-deadlines 의 학회 홈페이지도 자동으로 seed 에 추가되고,
+#          홈페이지 메뉴에서 workshop/competition/challenge 링크를 따라간다.
+# ---------------------------------------------------------------
+conferences:
+  cvpr:
+    name: CVPR
+    seeds:
+      - https://cvpr.thecvf.com/virtual/{year}/events/workshop
+      - https://cvpr.thecvf.com/Conferences/{year}/Workshops
+  iccv:
+    name: ICCV
+    seeds:
+      - https://iccv.thecvf.com/virtual/{year}/events/workshop
+      - https://iccv.thecvf.com/Conferences/{year}/Workshops
+  eccv:
+    name: ECCV
+    seeds:
+      - https://eccv.ecva.net/virtual/{year}/events/workshop
+      - https://eccv.ecva.net/Conferences/{year}/Workshops
+  aaai:
+    name: AAAI
+    seeds:
+      - https://aaai.org/conference/aaai/aaai-{yy}/workshops-program/
+  iclr:
+    name: ICLR
+    seeds:
+      - https://iclr.cc/virtual/{year}/events/workshop
+  icml:
+    name: ICML
+    seeds:
+      - https://icml.cc/virtual/{year}/events/workshop
+  nips:
+    name: NeurIPS
+    seeds:
+      - https://neurips.cc/virtual/{year}/events/workshop
+      - https://neurips.cc/virtual/{year}/events/competition
+  iros:
+    name: IROS
+    seeds:
+      - https://{year}.ieee-iros.org/
+  icra:
+    name: ICRA
+    seeds:
+      - https://{year}.ieee-icra.org/program/competitions/
+      - https://{year}.ieee-icra.org/program/workshops-and-tutorials/
+      - https://{year}.ieee-icra.org/competitions/
+  rss:
+    name: RSS
+    seeds:
+      - https://roboticsconference.org/{year}/program/workshops/
+  corl:
+    name: CoRL
+    seeds:
+      - https://{year}.corl.org/program/workshops
+      - https://www.corl.org/program/workshops
+
+# ---------------------------------------------------------------
+# 3. 어떤 회차를 볼지
+#   학회 개최일이 (오늘 - past_days) 이후인 회차만 challenge 를 탐색
+# ---------------------------------------------------------------
+editions:
+  past_days: 30
+
+# ---------------------------------------------------------------
+# 4. 크롤링 한도
+# ---------------------------------------------------------------
+crawl:
+  max_items_per_edition: 400   # 회차당 따라갈 workshop/competition 페이지 수
+  workers: 8
+  timeout: 20
+  cache_hours: 72              # 같은 URL 재요청 방지 (검증 반복 시 유용)
+
+# ---------------------------------------------------------------
+# 5. 메일
+#   SMTP 계정/비밀번호는 환경변수(=GitHub Secrets)로만 받는다:
+#   SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_TO(쉼표 구분), MAIL_FROM(선택)
+# ---------------------------------------------------------------
+mail:
+  subject_prefix: "[conf-watch]"
+  send_when_no_news: true      # 새 소식이 없어도 주간 요약 메일 발송
+  deadline_horizon_days: 365   # 메일에 표시할 다가오는 마감일 범위
