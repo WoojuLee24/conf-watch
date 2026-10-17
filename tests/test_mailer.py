@@ -28,10 +28,12 @@ class FakeSMTP:
 def test_send(monkeypatch):
     monkeypatch.setattr(mailer.smtplib, "SMTP", FakeSMTP)
     for k, v in {"SMTP_HOST": "smtp.example.com", "SMTP_USER": "bot@example.com", "SMTP_PASS": "app-password",
-                 "MAIL_TO": "a@example.com, b@example.com"}.items():
+                 }.items():
         monkeypatch.setenv(k, v)
     assert mailer.configured()
-    mailer.send("[conf-watch] 테스트", "<b>본문</b>", "본문")
+    monkeypatch.delenv("MAIL_TO", raising=False)
+    to = mailer.recipients("a@example.com, b@example.com")
+    mailer.send("[conf-watch] 테스트", "<b>본문</b>", "본문", to)
     sender, to, raw = FakeSMTP.sent[-1]
     assert to == ["a@example.com", "b@example.com"]
     msg = email.message_from_string(raw)

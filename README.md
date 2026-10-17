@@ -33,7 +33,6 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=you@gmail.com
 SMTP_PASS=<Gmail 앱 비밀번호 16자리>
-MAIL_TO=dnwn24@etri.re.kr
 ```
 
 ## 검증 모드 — `verify/ground_truth.yaml`
@@ -44,6 +43,6 @@ MAIL_TO=dnwn24@etri.re.kr
 
 ## GitHub Actions
 
-Settings → Secrets and variables → Actions 에 `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `MAIL_TO` (선택 `MAIL_FROM`) 등록.
+Settings → Secrets and variables → Actions 에 `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` (선택 `MAIL_FROM`) 등록. 받는 사람은 `config.yaml` 의 `mail.to`.
 Actions 탭 → weekly → Run workflow 로 수동 실행 (`run` / `verify` 선택).
 새 항목 판별용 상태는 `state/seen.json` 에 커밋된다.

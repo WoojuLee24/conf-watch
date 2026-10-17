@@ -10,20 +10,25 @@ from email.mime.text import MIMEText
 
 log = logging.getLogger(__name__)
 
-REQUIRED = ("SMTP_HOST", "SMTP_USER", "SMTP_PASS", "MAIL_TO")
+REQUIRED = ("SMTP_HOST", "SMTP_USER", "SMTP_PASS")
 
 
 def configured() -> bool:
     return all(os.environ.get(k) for k in REQUIRED)
 
 
-def send(subject: str, html_body: str, text_body: str) -> None:
+def recipients(default: str = "") -> list[str]:
+    return [x.strip() for x in (os.environ.get("MAIL_TO") or default).split(",") if x.strip()]
+
+
+def send(subject: str, html_body: str, text_body: str, to: list[str]) -> None:
     missing = [k for k in REQUIRED if not os.environ.get(k)]
     if missing:
         raise RuntimeError(f"메일 환경변수 누락: {', '.join(missing)}")
     host, port = os.environ["SMTP_HOST"], int(os.environ.get("SMTP_PORT", "587"))
     user, pw = os.environ["SMTP_USER"], os.environ["SMTP_PASS"]
-    to = [x.strip() for x in os.environ["MAIL_TO"].split(",") if x.strip()]
+    if not to:
+        raise RuntimeError("받는 사람 없음: config.yaml mail.to 또는 MAIL_TO")
     sender = os.environ.get("MAIL_FROM") or user
 
     msg = MIMEMultipart("alternative")

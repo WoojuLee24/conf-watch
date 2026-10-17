@@ -133,7 +133,9 @@ def cmd_run(args) -> int:
     log.info("보고서: %s (challenge %d건, 신규 %d건, 마감일 변경 %d건, fetch %s)",
              out_dir / "report.html", len(challenges), len(new_ids), len(dl_changes), fetcher.stats)
 
-    if not args.no_state:
+    def save_state():
+        if args.no_state:
+            return
         today = now.date().isoformat()
         for c in challenges:
             seen.setdefault(c.id, today)
@@ -143,9 +145,11 @@ def cmd_run(args) -> int:
 
     has_news = bool(new_ids or dl_changes)
     if args.no_mail:
+        save_state()
         return 0
     if not has_news and not cfg.get("mail", {}).get("send_when_no_news", True):
         log.info("새 소식 없음 → 메일 생략")
+        save_state()
         return 0
     prefix = cfg.get("mail", {}).get("subject_prefix", "[conf-watch]")
     tag = "첫 실행" if first_run else f"새 challenge {len(new_ids)} · 마감 변경 {len(dl_changes)}"
@@ -154,10 +158,13 @@ def cmd_run(args) -> int:
                       "", *[f"- {x}" for x in dl_changes],
                       "", *[f"- {e.name} {e.year} {KIND_KO.get(d.kind, d.kind)} {d.when_utc.astimezone(KST):%Y-%m-%d %H:%M} KST"
                             for e, d in upcoming[:15]]])
+    # 메일이 실제로 나간 뒤에만 state 를 갱신한다 (실패 시 다음 실행에서 같은 소식을 다시 보냄)
     if not mailer.configured():
-        log.warning("SMTP 환경변수가 없어 메일을 보내지 않음 (보고서 파일만 생성)")
-        return 0
-    mailer.send(subject, html_body, text)
+        log.error("SMTP 환경변수(SMTP_HOST/SMTP_USER/SMTP_PASS)가 없어 메일을 보낼 수 없음. "
+                  "미리보기만 하려면 --no-mail")
+        return 1
+    mailer.send(subject, html_body, text, mailer.recipients(cfg.get("mail", {}).get("to", "")))
+    save_state()
     return 0
 
 

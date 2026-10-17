@@ -102,9 +102,11 @@ crawl:
 # ---------------------------------------------------------------
 # 5. 메일
 #   SMTP 계정/비밀번호는 환경변수(=GitHub Secrets)로만 받는다:
-#   SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_TO(쉼표 구분), MAIL_FROM(선택)
+#   SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_FROM(선택)
+#   받는 사람은 아래 to (환경변수 MAIL_TO 가 있으면 그것이 우선)
 # ---------------------------------------------------------------
 mail:
+  to: dnwn24@etri.re.kr          # 여러 명이면 쉼표로 구분
   subject_prefix: "[conf-watch]"
   send_when_no_news: true      # 새 소식이 없어도 주간 요약 메일 발송
   deadline_horizon_days: 365   # 메일에 표시할 다가오는 마감일 범위
