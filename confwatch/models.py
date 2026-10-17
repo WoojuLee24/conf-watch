@@ -16,7 +16,12 @@ class Challenge:
     platforms: list[str] = field(default_factory=list)
     snippet: str = ""
     source: str = ""        # crawl / evalai
-    end_date: str = ""      # 플랫폼이 알려주는 제출 마감 (evalai)
+    start: str = ""         # challenge 시작일 (YYYY-MM-DD, 모르면 "")
+    end: str = ""           # challenge 제출 마감일
+    date_source: str = ""   # site / evalai
+    end_strong: bool = True # 마감일 근거가 challenge 라벨인지 (약하면 지났어도 학회 전까진 숨기지 않음)
+    conf_start: str = ""    # 학회 개최 시작일 (기간 미상일 때 종료 추정용)
+    status: str = ""        # 진행 중 / 예정 / 기간 미확인 / 종료
 
     @property
     def id(self) -> str:

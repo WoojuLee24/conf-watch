@@ -9,6 +9,9 @@ from urllib.parse import urldefrag, urljoin, urlparse
 
 from bs4 import BeautifulSoup
 
+import datetime as dt
+
+from ..dates import Window, extract_window
 from ..deadlines import Edition
 from ..fetch import Fetcher
 from ..match import Matcher, platform_links
@@ -45,6 +48,8 @@ class Item:
     texts: list[str] = field(default_factory=list)
     hrefs: list[str] = field(default_factory=list)
     site: str = ""          # 워크숍/challenge 외부 사이트
+    soups: list = field(default_factory=list)        # 날짜 추출용 (노이즈 태그 제거된 soup)
+    site_soup_links: list[tuple[str, str]] = field(default_factory=list)  # (href, 링크 문구) 타임라인 페이지 탐색용
 
 
 def domain(u: str) -> str:
@@ -63,6 +68,13 @@ def skip_url(u: str) -> bool:
     if any(s in d or s in u for s in SKIP_DOMAINS):
         return True
     return bool(re.search(r"\.(pdf|png|jpe?g|gif|svg|zip|mp4|ics|css|js)(\?|$)", u, re.I))
+
+
+def links_of(base: str, soup: BeautifulSoup) -> list[tuple[str, str]]:
+    return [(urldefrag(urljoin(base, a["href"]))[0], a.get_text(" ", strip=True)) for a in soup.find_all("a", href=True)]
+
+
+TIMELINE_LINK_RE = re.compile(r"challenge|competition|timeline|dates|schedule|important|track|leaderboard|participat", re.I)
 
 
 def clean_text(soup: BeautifulSoup) -> str:
@@ -216,18 +228,42 @@ class Crawler:
             hrefs = [urljoin(p.url, a["href"]) for a in hero.find_all("a", href=True)]
             it.hrefs = hrefs
             it.texts.append(clean_text(hero))
+            it.soups.append(hero)
             ext = [h for h in hrefs if domain(h) != domain(p.url) and not skip_url(h)]
             if ext:
                 it.site = ext[0]
                 q = self.f.get(ext[0])
                 if q:
                     s2 = BeautifulSoup(q.text, "lxml")
-                    it.hrefs += [urljoin(q.url, a["href"]) for a in s2.find_all("a", href=True)]
+                    it.site_soup_links = links_of(q.url, s2)
+                    it.hrefs += [h for h, _ in it.site_soup_links]
                     it.texts.append(clean_text(s2))
+                    it.soups.append(s2)
         else:
-            it.hrefs = [urljoin(p.url, a["href"]) for a in soup.find_all("a", href=True)]
+            it.site_soup_links = links_of(p.url, soup)
+            it.hrefs = [h for h, _ in it.site_soup_links]
             it.texts.append(clean_text(soup))
+            it.soups.append(soup)
         return it
+
+    def window(self, it: Item, ed: Edition) -> Window:
+        """challenge 사이트 + 같은 사이트의 challenge/timeline 하위 페이지(최대 3개)에서 기간 추출."""
+        anchor = ed.start or dt.date(ed.year, 6, 1)
+        soups = list(it.soups)
+        site = it.site or it.url
+        extra = []
+        for h, label in it.site_soup_links:
+            if (domain(h) == domain(site) and h.rstrip("/") != site.rstrip("/") and h not in extra
+                    and TIMELINE_LINK_RE.search(label + " " + urlparse(h).path) and not skip_url(h)):
+                extra.append(h)
+        for h in extra[:3]:
+            q = self.f.get(h)
+            if q:
+                s = BeautifulSoup(q.text, "lxml")
+                for t in s(NOISE_TAGS):
+                    t.decompose()
+                soups.append(s)
+        return extract_window(soups, anchor)
 
     def run(self, ed: Edition, seeds: list[str], latest: bool) -> list[Challenge]:
         listings = self.listing_pages(ed, seeds, latest)
@@ -254,9 +290,17 @@ class Crawler:
             links = platform_links(" ".join(it.hrefs))
             if not self.m.is_challenge(it.title + " " + it.context[:300], body + " " + " ".join(links)):
                 continue
-            out.append(Challenge(
+            out.append((it, Challenge(
                 conf=ed.name, conf_key=ed.key, year=ed.year,
                 title=it.title or it.url, url=it.site or it.url, detail_url=it.url,
                 keywords=hits, platforms=links, snippet=self.m.snippet(body), source="crawl",
-            ))
-        return out
+            )))
+        # 기간 추출은 매칭된 항목만 (추가 페이지 요청이 생기므로)
+        with ThreadPoolExecutor(self.workers) as ex:
+            wins = list(ex.map(lambda p: self.window(p[0], ed), out))
+        for (_, c), w in zip(out, wins):
+            c.start = w.start.isoformat() if w.start else ""
+            c.end = w.end.isoformat() if w.end else ""
+            c.date_source = w.source
+            c.end_strong = w.end_strong
+        return [c for _, c in out]

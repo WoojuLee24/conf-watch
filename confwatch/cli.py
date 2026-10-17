@@ -80,6 +80,31 @@ def scan_challenges(cfg: dict, fetcher: Fetcher, matcher: Matcher, targets: list
     return sorted(found.values(), key=lambda c: (order.get(c.conf_key, 99), -c.year, c.title.lower()))
 
 
+def classify(challenges: list[Challenge], editions: list[Edition], today: dt.date) -> None:
+    """시작/마감일로 상태 판정. 마감일을 모르면 학회가 끝났는지로 추정."""
+    starts = {e.id: e.start for e in editions}
+    for c in challenges:
+        cs = starts.get(f"{c.conf_key}{c.year}")
+        c.conf_start = cs.isoformat() if cs else ""
+        if c.end:
+            end = dt.date.fromisoformat(c.end)
+            conf_over = bool(cs and cs + dt.timedelta(days=7) < today)
+            if end < today and (c.end_strong or conf_over):
+                c.status = "종료"
+            elif end < today:
+                c.status = "기간 미확인"     # 지난 날짜가 논문 마감일 수도 있어 숨기지 않음
+            elif c.start and dt.date.fromisoformat(c.start) > today:
+                c.status = "예정"
+            else:
+                c.status = "진행 중"
+        elif cs and cs + dt.timedelta(days=7) < today:
+            c.status = "종료"
+        elif c.start and dt.date.fromisoformat(c.start) > today:
+            c.status = "예정"
+        else:
+            c.status = "기간 미확인"
+
+
 # ------------------------------------------------------------------ run
 def cmd_run(args) -> int:
     cfg = load_config(args.config)
@@ -98,6 +123,8 @@ def cmd_run(args) -> int:
     log.info("탐색 회차: %s", ", ".join(f"{e.name}{e.year}" for e in targets))
 
     challenges = scan_challenges(cfg, fetcher, matcher, targets, editions, errors)
+    classify(challenges, editions, now.astimezone(KST).date())
+    active = [c for c in challenges if c.status != "종료"]
 
     state_path = Path(args.state)
     state = json.loads(state_path.read_text()) if state_path.exists() else {}
@@ -119,7 +146,8 @@ def cmd_run(args) -> int:
 
     upcoming = upcoming_deadlines(editions, now, cfg.get("mail", {}).get("deadline_horizon_days", 365))
     scanned = [f"{e.name} {e.year}" for e in targets]
-    html_body = build_html(now, challenges, new_ids, upcoming, dl_changes, scanned, errors)
+    html_body = build_html(now, active, new_ids, upcoming, dl_changes, scanned, errors,
+                           hidden=len(challenges) - len(active))
 
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -143,7 +171,7 @@ def cmd_run(args) -> int:
         state_path.write_text(json.dumps({"challenges": seen, "deadlines": snap, "updated": now.isoformat()},
                                          ensure_ascii=False, indent=1, sort_keys=True))
 
-    has_news = bool(new_ids or dl_changes)
+    has_news = bool(any(c.id in new_ids for c in active) or dl_changes)
     if args.no_mail:
         save_state()
         return 0
@@ -152,9 +180,11 @@ def cmd_run(args) -> int:
         save_state()
         return 0
     prefix = cfg.get("mail", {}).get("subject_prefix", "[conf-watch]")
-    tag = "첫 실행" if first_run else f"새 challenge {len(new_ids)} · 마감 변경 {len(dl_changes)}"
+    n_new = sum(c.id in new_ids for c in active)
+    tag = "첫 실행" if first_run else f"새 challenge {n_new} · 마감 변경 {len(dl_changes)}"
     subject = f"{prefix} {now.astimezone(KST):%Y-%m-%d} 주간 리포트 ({tag})"
-    text = "\n".join([subject, "", *[f"- [{c.conf} {c.year}] {c.title}\n  {c.url}" for c in challenges if c.id in new_ids],
+    text = "\n".join([subject, "", *[f"- [{c.conf} {c.year}] {c.title} ({c.start or '?'} ~ {c.end or '?'}, {c.status})\n  {c.url}"
+                                      for c in active],
                       "", *[f"- {x}" for x in dl_changes],
                       "", *[f"- {e.name} {e.year} {KIND_KO.get(d.kind, d.kind)} {d.when_utc.astimezone(KST):%Y-%m-%d %H:%M} KST"
                             for e, d in upcoming[:15]]])
@@ -196,7 +226,7 @@ def cmd_verify(args) -> int:
         groups.setdefault((c["conf"], c["year"], tuple(c.get("keywords") or cfg.get("keywords") or [])), []).append(c)
 
     n_ok = 0
-    newest = latest_years(editions)
+    date_checks: list[bool] = []
     for (conf, year, kws), cs in groups.items():
         e = by_id.get(f"{conf}{year}")
         if not e:
@@ -215,7 +245,13 @@ def cmd_verify(args) -> int:
             tag = "진행중" if c.get("status") == "ongoing" else "과거"
             print(f"  {status}  [{tag}] {c['name']} ({e.name} {year}, 검색어={list(kws)})")
             if hit:
-                print(f"         → {hit.title[:80]} | {hit.url} | {hit.source} | 매칭 {hit.keywords}")
+                print(f"         → {hit.title[:80]} | {hit.url} | {hit.source} | 매칭 {hit.keywords}"
+                      f" | 기간 {hit.start or '?'} ~ {hit.end or '?'}")
+                for k in ("start", "end"):
+                    if c.get(k):
+                        ok = getattr(hit, k) == str(c[k])
+                        date_checks.append(ok)
+                        print(f"         {'PASS' if ok else 'FAIL'}  {k}: 기대 {c[k]} / 실제 {getattr(hit, k) or '?'}")
             else:
                 print(f"         → 탐지 실패. 후보 {len(found)}건: " + "; ".join(f.title[:40] for f in found[:5]))
         if errors:
@@ -223,8 +259,10 @@ def cmd_verify(args) -> int:
     total = len(cases)
     recall = n_ok / total if total else 1.0
     print(f"\nChallenge recall: {n_ok}/{total} = {recall:.0%} (기준 {args.min_recall:.0%})")
+    date_acc = sum(date_checks) / len(date_checks) if date_checks else 1.0
+    print(f"Challenge 기간 추출: {sum(date_checks)}/{len(date_checks)} = {date_acc:.0%} (기준 {args.min_recall:.0%})")
     print(f"마감일 실패: {failures}건 · fetch {fetcher.stats}")
-    return 0 if failures == 0 and recall >= args.min_recall else 1
+    return 0 if failures == 0 and recall >= args.min_recall and date_acc >= args.min_recall else 1
 
 
 def main(argv=None) -> int:

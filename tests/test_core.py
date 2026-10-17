@@ -91,3 +91,53 @@ def test_listing_virtual_items():
     c = Crawler(None, Matcher.from_config(CFG))
     items = c.items_from_listing("https://cvpr.thecvf.com/virtual/2025/events/workshop", BeautifulSoup(html, "lxml"))
     assert [i.url for i in items] == ["https://cvpr.thecvf.com/virtual/2025/workshop/123"]
+
+
+def _soup(html):
+    return BeautifulSoup(html, "lxml")
+
+
+def test_dates_table_and_ranges():
+    from confwatch.dates import extract_window
+    html = """<h2>Challenge Timeline</h2><table>
+      <tr><td>Apr 27 2026</td><td>Registration opens</td></tr>
+      <tr><td>Jul 12 2026</td><td>Proposal deadline</td></tr>
+      <tr><td>Aug 31 2026</td><td>Leaderboard closes &amp; finalists announced</td></tr>
+      <tr><td>Sep 28 - 30, 2026</td><td>Final competition</td></tr></table>
+      <h2>Call for Papers</h2><ul><li>Paper submission deadline: October 1, 2026</li>
+      <li>Workshop date: October 2, 2026</li></ul>"""
+    w = extract_window([_soup(html)], dt.date(2026, 9, 27))
+    assert (w.start, w.end, w.end_strong) == (dt.date(2026, 4, 27), dt.date(2026, 9, 30), True)
+
+
+def test_dates_label_after_date_and_year_inference():
+    from confwatch.dates import extract_window
+    # '날짜' 다음에 '라벨' 이 오는 카드형 + 연도 없는 날짜 (학회 2026-06 기준 → 2026)
+    html = """<h3>Important Dates</h3>
+      <div><p>March 1</p><p>Challenge server opens</p></div>
+      <div><p>May 20</p><p>Challenge submission deadline</p></div>
+      <div><p>March 10</p><p>Paper submission deadline</p></div>"""
+    w = extract_window([_soup(html)], dt.date(2026, 6, 5))
+    assert (w.start, w.end) == (dt.date(2026, 3, 1), dt.date(2026, 5, 20))
+
+
+def test_paper_only_dates_ignored():
+    from confwatch.dates import extract_window
+    html = "<h2>Call for Papers</h2><p>Submission deadline: March 10, 2026</p><p>Notification: April 1, 2026</p>"
+    assert not extract_window([_soup(html)], dt.date(2026, 6, 5)).end
+
+
+def test_classify_status():
+    from confwatch.cli import classify
+    from confwatch.models import Challenge
+    eds = [Edition("corl", "CoRL", 2026, "", "", "", dt.date(2026, 11, 9)),
+           Edition("iros", "IROS", 2026, "", "", "", dt.date(2026, 9, 27))]
+    mk = lambda key, **kw: Challenge(conf=key, conf_key=key, year=2026, title="t", url="u", **kw)
+    cs = [mk("corl", start="2026-09-21", end="2026-11-12"),          # 진행 중
+          mk("corl", start="2026-11-01", end="2026-11-08"),          # 예정
+          mk("corl", end="2026-10-01", end_strong=True),            # 마감 지남
+          mk("corl", end="2026-10-01", end_strong=False),           # 약한 근거 → 숨기지 않음
+          mk("corl"),                                               # 일정 없음, 학회 전
+          mk("iros")]                                               # 일정 없음, 학회 끝남
+    classify(cs, eds, dt.date(2026, 10, 17))
+    assert [c.status for c in cs] == ["진행 중", "예정", "종료", "기간 미확인", "기간 미확인", "종료"]

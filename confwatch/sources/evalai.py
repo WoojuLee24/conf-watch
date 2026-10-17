@@ -14,6 +14,7 @@ from ..models import Challenge
 log = logging.getLogger(__name__)
 
 API = "https://eval.ai/api/challenges/challenge/{kind}/approved/public"
+PHASES = "https://eval.ai/api/challenges/challenge/{id}/challenge_phase"
 PAGE = "https://eval.ai/web/challenges/challenge-page/{id}/overview"
 
 # 본문에서 학회명을 찾는 패턴 (RSS 는 일반 단어라 연도와 붙어 있을 때만)
@@ -62,6 +63,20 @@ def find(fetcher: Fetcher, matcher: Matcher, editions: list[Edition], raw: list[
             out.append(Challenge(
                 conf=e.name, conf_key=e.key, year=e.year, title=c.get("title", ""),
                 url=PAGE.format(id=c["id"]), keywords=hits, platforms=[PAGE.format(id=c["id"])],
-                snippet=matcher.snippet(text), source="evalai", end_date=(c.get("end_date") or "")[:10],
+                snippet=matcher.snippet(text), source="evalai", date_source="evalai",
+                **phase_window(fetcher, c),
             ))
     return out
+
+
+def phase_window(fetcher: Fetcher, c: dict) -> dict:
+    """공개 phase 들의 시작~마감. 2090년 이후 같은 '상시' 마감은 무시."""
+    starts, ends = [c.get("start_date")], [c.get("end_date")]
+    d = fetcher.get_json(PHASES.format(id=c["id"]))
+    for p in (d or {}).get("results", []) if isinstance(d, dict) else []:
+        if p.get("is_public", True):
+            starts.append(p.get("start_date"))
+            ends.append(p.get("end_date"))
+    starts = sorted(x[:10] for x in starts if x and x[:4] < "2090")
+    ends = sorted(x[:10] for x in ends if x and x[:4] < "2090")
+    return {"start": starts[0] if starts else "", "end": ends[-1] if ends else ""}
