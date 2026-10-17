@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-17T05:56:04.586767+00:00",
+ "generated": "2026-10-17T07:10:31.865064+00:00",
  "new": [],
  "challenges": [
   {
@@ -17,7 +17,12 @@
    "platforms": [],
    "snippet": "…while final assessments are conducted exclusively on unseen real-world manipulation environments. Baseline implementations, including Transformer-, Diffusion-, Vision-Language-Action, and World-Action-Model–based policies, are provided to ensure reproducibility and comparability. By coupling scalable simulation-based training with rigorous…",
    "source": "crawl",
-   "end_date": "",
+   "start": "",
+   "end": "",
+   "date_source": "",
+   "end_strong": false,
+   "conf_start": "2026-12-08",
+   "status": "기간 미확인",
    "id": "nips2026|neurips.cc/virtual/2026/competition/137687"
   },
   {
@@ -33,7 +38,12 @@
    "platforms": [],
    "snippet": "5th Workshop on Social Robot Navigation: From Humans, to Robots, and to the World  id : ws-sun-5th-workshop-on-social-robot-navigation-from-hum , kind : w , title : 5th Workshop on Social Robot Navig…",
    "source": "crawl",
-   "end_date": "",
+   "start": "",
+   "end": "",
+   "date_source": "",
+   "end_strong": false,
+   "conf_start": "2026-09-27",
+   "status": "종료",
    "id": "iros2026|socialnav2026.pages.dev"
   },
   {
@@ -50,7 +60,12 @@
    "platforms": [],
    "snippet": "…anipulation-Challenge/ , id : roco-assembly-challenge , compBay : COMP7 , name : ROCO: 2nd Robotic Collaborative Assembly Challenge , summary : A benchmark for embodied intelligence across physics understanding, dexterous manipulation, long-horizon reasoning, and generalization. , tracks : null, websiteUrl :  IROS 2026 Forceps…",
    "source": "crawl",
-   "end_date": "",
+   "start": "",
+   "end": "",
+   "date_source": "",
+   "end_strong": false,
+   "conf_start": "2026-09-27",
+   "status": "종료",
    "id": "iros2026|medcvr.github.io/forceps-manipulation-challenge"
   },
   {
@@ -67,7 +82,12 @@
    "platforms": [],
    "snippet": "…titute LeCAR Lab Humanoid Learning from Human Data with Physics Grounding Presentation abstract Humanoid robots offer two unique advantages for general-purpose embodied intelligence. First, they are inherently generalist platforms, capable of performing a wide range of tasks in complex, human-centric environments. Second, the…",
    "source": "crawl",
-   "end_date": "",
+   "start": "",
+   "end": "",
+   "date_source": "",
+   "end_strong": false,
+   "conf_start": "2026-09-27",
+   "status": "종료",
    "id": "iros2026|iros-2026-athletic-humanoid.github.io/workshop"
   },
   {
@@ -84,7 +104,12 @@
    "platforms": [],
    "snippet": "…tive Assembly Challenge  id : roco-assembly-challenge , compBay : COMP7 , name : ROCO: 2nd Robotic Collaborative Assembly Challenge , summary : A benchmark for embodied intelligence across physics understanding, dexterous manipulation, long-horizon reasoning, and generalization. , tracks : null, websiteUrl : https://rocochalle…",
    "source": "crawl",
-   "end_date": "",
+   "start": "2026-04-27",
+   "end": "2026-09-30",
+   "date_source": "site",
+   "end_strong": true,
+   "conf_start": "2026-09-27",
+   "status": "종료",
    "id": "iros2026|rocochallenge.github.io/roco-iros2026"
   },
   {
@@ -101,7 +126,12 @@
    "platforms": [],
    "snippet": "…sion about how current research can address them. We invited papers for submission to the workshop related to the topics of ITS, autonomous vehicles, robotics, embodied AI, motion planning, perception and modeling. Papers to IEEE/RSJ IROS 2026 can be submitted to Prof. Sabur Baidya via email . The page limit is 8 pages. The pa…",
    "source": "crawl",
-   "end_date": "",
+   "start": "",
+   "end": "2026-09-01",
+   "date_source": "site",
+   "end_strong": false,
+   "conf_start": "2026-09-27",
+   "status": "종료",
    "id": "iros2026|ppniv.github.io"
   },
   {
@@ -117,7 +147,12 @@
    "platforms": [],
    "snippet": "…ummary : The 31st running of the RoboRacer autonomous racing competition. , tracks : null, websiteUrl : https://iros2026-race.roboracer.ai/ , id : forceps-fine-manipulation-challenge , compBay : COMP6 , name : Forceps-based Fine Manipulation Challenge , summary : A surgical-inspired fine-manipulation benchmark using EndoWrist inst…",
    "source": "crawl",
-   "end_date": "",
+   "start": "2026-06-09",
+   "end": "",
+   "date_source": "site",
+   "end_strong": false,
+   "conf_start": "2026-09-27",
+   "status": "종료",
    "id": "iros2026|iros2026-race.roboracer.ai"
   },
   {
@@ -133,7 +168,12 @@
    "platforms": [],
    "snippet": "…rth Rover Challenge  id : earth-rover-challenge , compBay : COMP2 , name : The Earth Rover Challenge , summary : A globally distributed, in-the-wild autonomous navigation competition testing autonomous policies against expert human teleoperators on the same robots and missions. , tracks : Urban , Indoor , Off-Road , Marathon , w…",
    "source": "crawl",
-   "end_date": "",
+   "start": "",
+   "end": "2026-09-30",
+   "date_source": "site",
+   "end_strong": true,
+   "conf_start": "2026-09-27",
+   "status": "종료",
    "id": "iros2026|earth-rover-challenge.github.io"
   },
   {
@@ -149,7 +189,12 @@
    "platforms": [],
    "snippet": "…ummary : The 31st running of the RoboRacer autonomous racing competition. , tracks : null, websiteUrl : https://iros2026-race.roboracer.ai/ , id : forceps-fine-manipulation-challenge , c The Robotic Origami Challenge — IROS 2026 · Dexterous Robot Hands vs. Origami Masters 折 IROS 2026 · Pittsburgh · 折紙 · First Edition The Robotic O…",
    "source": "crawl",
-   "end_date": "",
+   "start": "",
+   "end": "",
+   "date_source": "",
+   "end_strong": false,
+   "conf_start": "2026-09-27",
+   "status": "종료",
    "id": "iros2026|robotic-origami-challenge.github.io"
   },
   {
@@ -166,7 +211,12 @@
    "platforms": [],
    "snippet": "…ormation gathering with a focus on active perception, exploration planning, and decision-making under uncertainty. Kostas Alexis From Autonomous Exploration to Embodied Q&A Norwegian University of Science and Technology, Norway Jen Jen Chung Title Pending The University of Queensland, Australia Sebastian Scherer Explore what y…",
    "source": "crawl",
-   "end_date": "",
+   "start": "",
+   "end": "2026-09-10",
+   "date_source": "site",
+   "end_strong": true,
+   "conf_start": "2026-09-27",
+   "status": "종료",
    "id": "iros2026|frostlab.byu.edu/iig-workshop"
   },
   {
@@ -183,7 +233,12 @@
    "platforms": [],
    "snippet": "Volting Cup \\u2013 Embodied Intelligence, Expressive Humanoids & Inclusive Mobility  id : volting-cup , compBay : COMP1 , name : Volting Cup Embodied Intelligence, Expressive Humanoids &…",
    "source": "crawl",
-   "end_date": "",
+   "start": "",
+   "end": "",
+   "date_source": "",
+   "end_strong": false,
+   "conf_start": "2026-09-27",
+   "status": "종료",
    "id": "iros2026|uvsq.fr/the-volting-cup-at-iros-2026"
   },
   {
@@ -202,7 +257,12 @@
    "platforms": [],
    "snippet": "…it fails, and which capability should be improved. Our workshop brings together researchers in robot learning, manipulation, embodied AI, computer vision, and vision-language-action modeling to rethink how fine-grained robotic capabilities should be evaluated. The workshop is built around MetaFine , a diagnostic meta-evaluation framework t…",
    "source": "crawl",
-   "end_date": "",
+   "start": "",
+   "end": "2026-10-21",
+   "date_source": "site",
+   "end_strong": false,
+   "conf_start": "2026-11-09",
+   "status": "진행 중",
    "id": "corl2026|robofinemani2026.github.io"
   },
   {
@@ -222,7 +282,12 @@
    "platforms": [],
    "snippet": "…, distillation, adaptive compute, action chunking, hardware-aware design, edge-cloud systems, or safety and control under timing constraints, whether you build vision-language-action policies, world-action models, or something that does not fit either label. Submissions are non-archival and close October 12 . Why now RT-2's 55B parameters r…",
    "source": "crawl",
-   "end_date": "",
+   "start": "",
+   "end": "2026-11-07",
+   "date_source": "site",
+   "end_strong": true,
+   "conf_start": "2026-11-09",
+   "status": "진행 중",
    "id": "corl2026|efficient-embodied-ai.github.io"
   },
   {
@@ -242,7 +307,12 @@
    ],
    "snippet": "…1st Workshop on \"Structured Physical Intelligence\" (SPIN) Remember, Retrieve, Act: Memory for Robot Foundation Models Efficient Foundation Models for Real-Time Embodied AI Continually Self-Improving Robots Workshop (CSIR-2026) Learn@Deploy: Robot Learning at Deployment Pretrain to Adapt: What Makes a Pretrained Policy Adaptabl…",
    "source": "crawl",
-   "end_date": "",
+   "start": "",
+   "end": "2026-11-01",
+   "date_source": "site",
+   "end_strong": true,
+   "conf_start": "2026-11-09",
+   "status": "진행 중",
    "id": "corl2026|corl2026-realworld-robot-learning.github.io"
   },
   {
@@ -260,7 +330,12 @@
    "platforms": [],
    "snippet": "…1st Workshop on \"Structured Physical Intelligence\" (SPIN) Remember, Retrieve, Act: Memory for Robot Foundation Models Efficient Foundation Models for Real-Time Embodied AI Continually Self-Improving Robots Workshop (CSIR-2026) Learn@Deploy: Robot Learning at Deployment Pretrain to Adapt: What Makes a Pretrained Policy Adaptabl…",
    "source": "crawl",
-   "end_date": "",
+   "start": "2026-08-15",
+   "end": "",
+   "date_source": "site",
+   "end_strong": false,
+   "conf_start": "2026-11-09",
+   "status": "기간 미확인",
    "id": "corl2026|arlo0o.github.io/grounded-driving-world-models_workshop"
   },
   {
@@ -280,7 +355,12 @@
    "platforms": [],
    "snippet": "…point gap between handheld collection and robot deployment End-effector-centric policies and cross-embodiment transfer (single-arm, bimanual, mobile, humanoid) Vision-language-action (VLA) models and diffusion policies for real-robot manipulation Force and tactile sensing with multi-finger dexterity Data scaling, curation, and quality for l…",
    "source": "crawl",
-   "end_date": "",
+   "start": "2026-08-11",
+   "end": "2026-11-12",
+   "date_source": "site",
+   "end_strong": true,
+   "conf_start": "2026-11-09",
+   "status": "진행 중",
    "id": "corl2026|umi-olympics.airoa.io"
   }
  ],
