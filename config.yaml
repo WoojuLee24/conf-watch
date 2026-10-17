@@ -105,7 +105,7 @@ crawl:
 #   나머지는 아래 값 사용 (같은 이름의 환경변수 SMTP_HOST/SMTP_PORT/SMTP_USER/MAIL_TO 가 있으면 그것이 우선)
 # ---------------------------------------------------------------
 mail:
-  to: dnwn24@etri.re.kr          # 받는 사람. 여러 명이면 쉼표로 구분
+  to: dnwn24@etri.re.kr, dnwn24.etri@gmail.com   # 받는 사람. 여러 명이면 쉼표로 구분
   smtp_host: smtp.gmail.com
   smtp_port: 587
   smtp_user: dnwn24.etri@gmail.com   # 보내는 계정 (Gmail 앱 비밀번호를 SMTP_PASS 로)
