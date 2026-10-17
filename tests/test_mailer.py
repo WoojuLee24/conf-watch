@@ -27,15 +27,17 @@ class FakeSMTP:
 
 def test_send(monkeypatch):
     monkeypatch.setattr(mailer.smtplib, "SMTP", FakeSMTP)
-    for k, v in {"SMTP_HOST": "smtp.example.com", "SMTP_USER": "bot@example.com", "SMTP_PASS": "app-password",
-                 }.items():
-        monkeypatch.setenv(k, v)
-    assert mailer.configured()
-    monkeypatch.delenv("MAIL_TO", raising=False)
-    to = mailer.recipients("a@example.com, b@example.com")
-    mailer.send("[conf-watch] 테스트", "<b>본문</b>", "본문", to)
+    for k in ("SMTP_HOST", "SMTP_PORT", "SMTP_USER", "MAIL_TO"):
+        monkeypatch.delenv(k, raising=False)
+    cfg = {"to": "a@example.com, b@example.com", "smtp_host": "smtp.example.com", "smtp_user": "bot@example.com"}
+    monkeypatch.delenv("SMTP_PASS", raising=False)
+    assert mailer.missing(mailer.settings(cfg)) == ["SMTP_PASS"]
+    monkeypatch.setenv("SMTP_PASS", "app-password")
+    st = mailer.settings(cfg)
+    assert st["port"] == 587 and not mailer.missing(st)
+    mailer.send("[conf-watch] 테스트", "<b>본문</b>", "본문", st)
     sender, to, raw = FakeSMTP.sent[-1]
-    assert to == ["a@example.com", "b@example.com"]
+    assert sender == "bot@example.com" and to == ["a@example.com", "b@example.com"]
     msg = email.message_from_string(raw)
     assert str(email.header.make_header(email.header.decode_header(msg["Subject"]))) == "[conf-watch] 테스트"
     assert [p.get_content_type() for p in msg.get_payload()] == ["text/plain", "text/html"]

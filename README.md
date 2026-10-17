@@ -29,10 +29,7 @@ docker compose run --rm run       # 실제 실행 (.env 의 SMTP 설정으로 �
 `.env` 예시 (git 에 올리지 않음):
 
 ```
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=you@gmail.com
-SMTP_PASS=<Gmail 앱 비밀번호 16자리>
+SMTP_PASS=<dnwn24.etri@gmail.com 의 Gmail 앱 비밀번호 16자리>
 ```
 
 ## 검증 모드 — `verify/ground_truth.yaml`
@@ -43,6 +40,6 @@ SMTP_PASS=<Gmail 앱 비밀번호 16자리>
 
 ## GitHub Actions
 
-Settings → Secrets and variables → Actions 에 `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` (선택 `MAIL_FROM`) 등록. 받는 사람은 `config.yaml` 의 `mail.to`.
+Settings → Secrets and variables → Actions 에 `SMTP_PASS` (Gmail 앱 비밀번호) 하나만 등록. 보내는/받는 주소와 SMTP 서버는 `config.yaml` 의 `mail`.
 Actions 탭 → weekly → Run workflow 로 수동 실행 (`run` / `verify` 선택).
 새 항목 판별용 상태는 `state/seen.json` 에 커밋된다.

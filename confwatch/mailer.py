@@ -10,26 +10,28 @@ from email.mime.text import MIMEText
 
 log = logging.getLogger(__name__)
 
-REQUIRED = ("SMTP_HOST", "SMTP_USER", "SMTP_PASS")
+def settings(cfg: dict) -> dict:
+    """config.yaml 의 mail 섹션 + 환경변수(우선). 비밀번호는 환경변수로만."""
+    env = os.environ.get
+    return {
+        "host": env("SMTP_HOST") or cfg.get("smtp_host", ""),
+        "port": int(env("SMTP_PORT") or cfg.get("smtp_port", 587)),
+        "user": env("SMTP_USER") or cfg.get("smtp_user", ""),
+        "password": env("SMTP_PASS", ""),
+        "to": [x.strip() for x in (env("MAIL_TO") or cfg.get("to", "")).split(",") if x.strip()],
+    }
 
 
-def configured() -> bool:
-    return all(os.environ.get(k) for k in REQUIRED)
+def missing(st: dict) -> list[str]:
+    names = {"host": "SMTP_HOST(smtp_host)", "user": "SMTP_USER(smtp_user)", "password": "SMTP_PASS", "to": "MAIL_TO(to)"}
+    return [names[k] for k in names if not st[k]]
 
 
-def recipients(default: str = "") -> list[str]:
-    return [x.strip() for x in (os.environ.get("MAIL_TO") or default).split(",") if x.strip()]
-
-
-def send(subject: str, html_body: str, text_body: str, to: list[str]) -> None:
-    missing = [k for k in REQUIRED if not os.environ.get(k)]
-    if missing:
-        raise RuntimeError(f"메일 환경변수 누락: {', '.join(missing)}")
-    host, port = os.environ["SMTP_HOST"], int(os.environ.get("SMTP_PORT", "587"))
-    user, pw = os.environ["SMTP_USER"], os.environ["SMTP_PASS"]
-    if not to:
-        raise RuntimeError("받는 사람 없음: config.yaml mail.to 또는 MAIL_TO")
-    sender = os.environ.get("MAIL_FROM") or user
+def send(subject: str, html_body: str, text_body: str, st: dict) -> None:
+    if missing(st):
+        raise RuntimeError(f"메일 설정 누락: {', '.join(missing(st))}")
+    host, port, user, pw, to = st["host"], st["port"], st["user"], st["password"], st["to"]
+    sender = user
 
     msg = MIMEMultipart("alternative")
     msg["Subject"], msg["From"], msg["To"] = subject, sender, ", ".join(to)

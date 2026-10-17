@@ -1,0 +1,414 @@
+{
+ "generated": "2026-10-17T05:36:44.442072+00:00",
+ "new": [
+  "corl2026|arlo0o.github.io/grounded-driving-world-models_workshop",
+  "corl2026|corl2026-realworld-robot-learning.github.io",
+  "corl2026|efficient-embodied-ai.github.io",
+  "corl2026|robofinemani2026.github.io",
+  "corl2026|umi-olympics.airoa.io",
+  "iros2026|earth-rover-challenge.github.io",
+  "iros2026|frostlab.byu.edu/iig-workshop",
+  "iros2026|iros-2026-athletic-humanoid.github.io/workshop",
+  "iros2026|iros2026-race.roboracer.ai",
+  "iros2026|medcvr.github.io/forceps-manipulation-challenge",
+  "iros2026|ppniv.github.io",
+  "iros2026|robotic-origami-challenge.github.io",
+  "iros2026|rocochallenge.github.io/roco-iros2026",
+  "iros2026|socialnav2026.pages.dev",
+  "iros2026|uvsq.fr/the-volting-cup-at-iros-2026",
+  "nips2026|neurips.cc/virtual/2026/competition/137687"
+ ],
+ "challenges": [
+  {
+   "conf": "NeurIPS",
+   "conf_key": "nips",
+   "year": 2026,
+   "title": "RoboSynChallenge: Mastering Real-World Dexterity via Generalizing Synthesized Manipulation Skills",
+   "url": "https://neurips.cc/virtual/2026/competition/137687",
+   "detail_url": "https://neurips.cc/virtual/2026/competition/137687",
+   "keywords": [
+    "vision-language-action",
+    "embodied",
+    "manipulation"
+   ],
+   "platforms": [],
+   "snippet": "…while final assessments are conducted exclusively on unseen real-world manipulation environments. Baseline implementations, including Transformer-, Diffusion-, Vision-Language-Action, and World-Action-Model–based policies, are provided to ensure reproducibility and comparability. By coupling scalable simulation-based training with rigorous…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "nips2026|neurips.cc/virtual/2026/competition/137687"
+  },
+  {
+   "conf": "IROS",
+   "conf_key": "iros",
+   "year": 2026,
+   "title": "5th Workshop on Social Robot Navigation: From Humans, to Robots, and to the World",
+   "url": "https://socialnav2026.pages.dev/",
+   "detail_url": "https://socialnav2026.pages.dev/",
+   "keywords": [
+    "\\bnavigation\\b"
+   ],
+   "platforms": [],
+   "snippet": "5th Workshop on Social Robot Navigation: From Humans, to Robots, and to the World  id : ws-sun-5th-workshop-on-social-robot-navigation-from-hum , kind : w , title : 5th Workshop on Social Robot Navig…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "iros2026|socialnav2026.pages.dev"
+  },
+  {
+   "conf": "IROS",
+   "conf_key": "iros",
+   "year": 2026,
+   "title": "Forceps-based Fine Manipulation Challenge",
+   "url": "https://medcvr.github.io/Forceps-Manipulation-Challenge/",
+   "detail_url": "https://medcvr.github.io/Forceps-Manipulation-Challenge/",
+   "keywords": [
+    "embodied",
+    "manipulation"
+   ],
+   "platforms": [],
+   "snippet": "…anipulation-Challenge/ , id : roco-assembly-challenge , compBay : COMP7 , name : ROCO: 2nd Robotic Collaborative Assembly Challenge , summary : A benchmark for embodied intelligence across physics understanding, dexterous manipulation, long-horizon reasoning, and generalization. , tracks : null, websiteUrl :  IROS 2026 Forceps…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "iros2026|medcvr.github.io/forceps-manipulation-challenge"
+  },
+  {
+   "conf": "IROS",
+   "conf_key": "iros",
+   "year": 2026,
+   "title": "Perception and Decision Making for Athletic Humanoid Robotics",
+   "url": "https://iros-2026-athletic-humanoid.github.io/workshop/",
+   "detail_url": "https://iros-2026-athletic-humanoid.github.io/workshop/",
+   "keywords": [
+    "embodied",
+    "manipulation"
+   ],
+   "platforms": [],
+   "snippet": "…titute LeCAR Lab Humanoid Learning from Human Data with Physics Grounding Presentation abstract Humanoid robots offer two unique advantages for general-purpose embodied intelligence. First, they are inherently generalist platforms, capable of performing a wide range of tasks in complex, human-centric environments. Second, the…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "iros2026|iros-2026-athletic-humanoid.github.io/workshop"
+  },
+  {
+   "conf": "IROS",
+   "conf_key": "iros",
+   "year": 2026,
+   "title": "ROCO: 2nd Robotic Collaborative Assembly Challenge",
+   "url": "https://rocochallenge.github.io/RoCo-IROS2026/",
+   "detail_url": "https://rocochallenge.github.io/RoCo-IROS2026/",
+   "keywords": [
+    "embodied",
+    "manipulation"
+   ],
+   "platforms": [],
+   "snippet": "…tive Assembly Challenge  id : roco-assembly-challenge , compBay : COMP7 , name : ROCO: 2nd Robotic Collaborative Assembly Challenge , summary : A benchmark for embodied intelligence across physics understanding, dexterous manipulation, long-horizon reasoning, and generalization. , tracks : null, websiteUrl : https://rocochalle…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "iros2026|rocochallenge.github.io/roco-iros2026"
+  },
+  {
+   "conf": "IROS",
+   "conf_key": "iros",
+   "year": 2026,
+   "title": "The 16th Workshop on Planning, Perception and Navigation for Intelligent Vehicles (PPNIV 2026)",
+   "url": "https://ppniv.github.io/",
+   "detail_url": "https://ppniv.github.io/",
+   "keywords": [
+    "embodied",
+    "\\bnavigation\\b"
+   ],
+   "platforms": [],
+   "snippet": "…sion about how current research can address them. We invited papers for submission to the workshop related to the topics of ITS, autonomous vehicles, robotics, embodied AI, motion planning, perception and modeling. Papers to IEEE/RSJ IROS 2026 can be submitted to Prof. Sabur Baidya via email . The page limit is 8 pages. The pa…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "iros2026|ppniv.github.io"
+  },
+  {
+   "conf": "IROS",
+   "conf_key": "iros",
+   "year": 2026,
+   "title": "The 31st RoboRacer Autonomous Racing Competition",
+   "url": "https://iros2026-race.roboracer.ai/",
+   "detail_url": "https://iros2026-race.roboracer.ai/",
+   "keywords": [
+    "manipulation"
+   ],
+   "platforms": [],
+   "snippet": "…ummary : The 31st running of the RoboRacer autonomous racing competition. , tracks : null, websiteUrl : https://iros2026-race.roboracer.ai/ , id : forceps-fine-manipulation-challenge , compBay : COMP6 , name : Forceps-based Fine Manipulation Challenge , summary : A surgical-inspired fine-manipulation benchmark using EndoWrist inst…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "iros2026|iros2026-race.roboracer.ai"
+  },
+  {
+   "conf": "IROS",
+   "conf_key": "iros",
+   "year": 2026,
+   "title": "The Earth Rover Challenge",
+   "url": "https://earth-rover-challenge.github.io/",
+   "detail_url": "https://earth-rover-challenge.github.io/",
+   "keywords": [
+    "\\bnavigation\\b"
+   ],
+   "platforms": [],
+   "snippet": "…rth Rover Challenge  id : earth-rover-challenge , compBay : COMP2 , name : The Earth Rover Challenge , summary : A globally distributed, in-the-wild autonomous navigation competition testing autonomous policies against expert human teleoperators on the same robots and missions. , tracks : Urban , Indoor , Off-Road , Marathon , w…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "iros2026|earth-rover-challenge.github.io"
+  },
+  {
+   "conf": "IROS",
+   "conf_key": "iros",
+   "year": 2026,
+   "title": "The Robotic Origami Challenge",
+   "url": "https://robotic-origami-challenge.github.io/",
+   "detail_url": "https://robotic-origami-challenge.github.io/",
+   "keywords": [
+    "manipulation"
+   ],
+   "platforms": [],
+   "snippet": "…ummary : The 31st running of the RoboRacer autonomous racing competition. , tracks : null, websiteUrl : https://iros2026-race.roboracer.ai/ , id : forceps-fine-manipulation-challenge , c The Robotic Origami Challenge — IROS 2026 · Dexterous Robot Hands vs. Origami Masters 折 IROS 2026 · Pittsburgh · 折紙 · First Edition The Robotic O…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "iros2026|robotic-origami-challenge.github.io"
+  },
+  {
+   "conf": "IROS",
+   "conf_key": "iros",
+   "year": 2026,
+   "title": "The Workshop and Competition on Intelligent Information Gathering for Single and Multi-Robot Systems",
+   "url": "https://frostlab.byu.edu/IIG-workshop/",
+   "detail_url": "https://frostlab.byu.edu/IIG-workshop/",
+   "keywords": [
+    "embodied",
+    "manipulation"
+   ],
+   "platforms": [],
+   "snippet": "…ormation gathering with a focus on active perception, exploration planning, and decision-making under uncertainty. Kostas Alexis From Autonomous Exploration to Embodied Q&A Norwegian University of Science and Technology, Norway Jen Jen Chung Title Pending The University of Queensland, Australia Sebastian Scherer Explore what y…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "iros2026|frostlab.byu.edu/iig-workshop"
+  },
+  {
+   "conf": "IROS",
+   "conf_key": "iros",
+   "year": 2026,
+   "title": "Volting Cup \\u2013 Embodied Intelligence, Expressive Humanoids & Inclusive Mobility",
+   "url": "https://www.uvsq.fr/the-volting-cup-at-iros-2026",
+   "detail_url": "https://www.uvsq.fr/the-volting-cup-at-iros-2026",
+   "keywords": [
+    "embodied",
+    "\\bnavigation\\b"
+   ],
+   "platforms": [],
+   "snippet": "Volting Cup \\u2013 Embodied Intelligence, Expressive Humanoids & Inclusive Mobility  id : volting-cup , compBay : COMP1 , name : Volting Cup Embodied Intelligence, Expressive Humanoids &…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "iros2026|uvsq.fr/the-volting-cup-at-iros-2026"
+  },
+  {
+   "conf": "CoRL",
+   "conf_key": "corl",
+   "year": 2026,
+   "title": "Beyond Binary Success: Diagnosing Fine-Grained Capabilities in Robot Manipulation",
+   "url": "https://robofinemani2026.github.io/",
+   "detail_url": "https://robofinemani2026.github.io/",
+   "keywords": [
+    "vision-language-action",
+    "embodied",
+    "\\bnavigation\\b",
+    "manipulation"
+   ],
+   "platforms": [],
+   "snippet": "…it fails, and which capability should be improved. Our workshop brings together researchers in robot learning, manipulation, embodied AI, computer vision, and vision-language-action modeling to rethink how fine-grained robotic capabilities should be evaluated. The workshop is built around MetaFine , a diagnostic meta-evaluation framework t…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "corl2026|robofinemani2026.github.io"
+  },
+  {
+   "conf": "CoRL",
+   "conf_key": "corl",
+   "year": 2026,
+   "title": "Efficient Foundation Models for Real-Time Embodied AI",
+   "url": "http://efficient-embodied-ai.github.io",
+   "detail_url": "http://efficient-embodied-ai.github.io",
+   "keywords": [
+    "vision-language-action",
+    "VLA",
+    "embodied",
+    "\\bnavigation\\b",
+    "manipulation"
+   ],
+   "platforms": [],
+   "snippet": "…, distillation, adaptive compute, action chunking, hardware-aware design, edge-cloud systems, or safety and control under timing constraints, whether you build vision-language-action policies, world-action models, or something that does not fit either label. Submissions are non-archival and close October 12 . Why now RT-2's 55B parameters r…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "corl2026|efficient-embodied-ai.github.io"
+  },
+  {
+   "conf": "CoRL",
+   "conf_key": "corl",
+   "year": 2026,
+   "title": "From GPU-Accelerated Simulation for Real-World Robot Policy Learning",
+   "url": "https://corl2026-realworld-robot-learning.github.io/",
+   "detail_url": "https://corl2026-realworld-robot-learning.github.io/",
+   "keywords": [
+    "embodied",
+    "\\bnavigation\\b",
+    "manipulation"
+   ],
+   "platforms": [
+    "https://huggingface.co/spaces/helen9975/roboeval-challenge"
+   ],
+   "snippet": "…1st Workshop on \"Structured Physical Intelligence\" (SPIN) Remember, Retrieve, Act: Memory for Robot Foundation Models Efficient Foundation Models for Real-Time Embodied AI Continually Self-Improving Robots Workshop (CSIR-2026) Learn@Deploy: Robot Learning at Deployment Pretrain to Adapt: What Makes a Pretrained Policy Adaptabl…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "corl2026|corl2026-realworld-robot-learning.github.io"
+  },
+  {
+   "conf": "CoRL",
+   "conf_key": "corl",
+   "year": 2026,
+   "title": "Grounded 4D Multimodal World Models for Autonomous Driving Decision Making",
+   "url": "https://arlo0o.github.io/Grounded-Driving-World-Models_Workshop/",
+   "detail_url": "https://arlo0o.github.io/Grounded-Driving-World-Models_Workshop/",
+   "keywords": [
+    "embodied",
+    "\\bnavigation\\b",
+    "manipulation"
+   ],
+   "platforms": [],
+   "snippet": "…1st Workshop on \"Structured Physical Intelligence\" (SPIN) Remember, Retrieve, Act: Memory for Robot Foundation Models Efficient Foundation Models for Real-Time Embodied AI Continually Self-Improving Robots Workshop (CSIR-2026) Learn@Deploy: Robot Learning at Deployment Pretrain to Adapt: What Makes a Pretrained Policy Adaptabl…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "corl2026|arlo0o.github.io/grounded-driving-world-models_workshop"
+  },
+  {
+   "conf": "CoRL",
+   "conf_key": "corl",
+   "year": 2026,
+   "title": "The UMI Olympics: From Handheld Devices to Real-World Policies",
+   "url": "https://umi-olympics.airoa.io/",
+   "detail_url": "https://umi-olympics.airoa.io/",
+   "keywords": [
+    "vision-language-action",
+    "VLA",
+    "embodied",
+    "\\bnavigation\\b",
+    "manipulation"
+   ],
+   "platforms": [],
+   "snippet": "…point gap between handheld collection and robot deployment End-effector-centric policies and cross-embodiment transfer (single-arm, bimanual, mobile, humanoid) Vision-language-action (VLA) models and diffusion policies for real-robot manipulation Force and tactile sensing with multi-finger dexterity Data scaling, curation, and quality for l…",
+   "source": "crawl",
+   "end_date": "",
+   "id": "corl2026|umi-olympics.airoa.io"
+  }
+ ],
+ "upcoming_deadlines": [
+  {
+   "conf": "AAAI",
+   "year": 2027,
+   "kind": "rebuttal_deadline",
+   "utc": "2026-10-26T11:59:59+00:00",
+   "raw": "2026-10-25 23:59:59",
+   "tz": "UTC-12",
+   "link": "https://aaai.org/conference/aaai/aaai-27/"
+  },
+  {
+   "conf": "CVPR",
+   "year": 2027,
+   "kind": "abstract_deadline",
+   "utc": "2026-11-11T11:59:59+00:00",
+   "raw": "2026-11-10 23:59:59",
+   "tz": "UTC-12",
+   "link": "https://cvpr.thecvf.com/Conferences/2027"
+  },
+  {
+   "conf": "CVPR",
+   "year": 2027,
+   "kind": "deadline",
+   "utc": "2026-11-17T11:59:59+00:00",
+   "raw": "2026-11-16 23:59:59",
+   "tz": "UTC-12",
+   "link": "https://cvpr.thecvf.com/Conferences/2027"
+  },
+  {
+   "conf": "ICLR",
+   "year": 2027,
+   "kind": "rebuttal_deadline",
+   "utc": "2026-11-19T11:59:59+00:00",
+   "raw": "2026-11-18 23:59:59",
+   "tz": "AoE",
+   "link": "https://iclr.cc/Conferences/2027"
+  },
+  {
+   "conf": "AAAI",
+   "year": 2027,
+   "kind": "decision_deadline",
+   "utc": "2026-12-01T11:59:59+00:00",
+   "raw": "2026-11-30 23:59:59",
+   "tz": "UTC-12",
+   "link": "https://aaai.org/conference/aaai/aaai-27/"
+  },
+  {
+   "conf": "RSS",
+   "year": 2027,
+   "kind": "deadline",
+   "utc": "2026-12-05T11:59:59+00:00",
+   "raw": "2026-12-04 23:59:59",
+   "tz": "AoE",
+   "link": "https://roboticsconference.org/"
+  },
+  {
+   "conf": "ICLR",
+   "year": 2027,
+   "kind": "decision_deadline",
+   "utc": "2026-12-17T11:59:59+00:00",
+   "raw": "2026-12-16 23:59:59",
+   "tz": "AoE",
+   "link": "https://iclr.cc/Conferences/2027"
+  },
+  {
+   "conf": "ICRA",
+   "year": 2027,
+   "kind": "decision_deadline",
+   "utc": "2027-02-01T11:59:00+00:00",
+   "raw": "2027-02-01 03:59:00",
+   "tz": "UTC-8",
+   "link": "https://2027.ieee-icra.org/"
+  },
+  {
+   "conf": "CVPR",
+   "year": 2027,
+   "kind": "rebuttal_deadline",
+   "utc": "2027-02-02T11:59:59+00:00",
+   "raw": "2027-02-01 23:59:59",
+   "tz": "UTC-12",
+   "link": "https://cvpr.thecvf.com/Conferences/2027"
+  },
+  {
+   "conf": "RSS",
+   "year": 2027,
+   "kind": "rebuttal_deadline",
+   "utc": "2027-02-13T11:59:59+00:00",
+   "raw": "2027-02-12 23:59:59",
+   "tz": "AoE",
+   "link": "https://roboticsconference.org/"
+  },
+  {
+   "conf": "CVPR",
+   "year": 2027,
+   "kind": "decision_deadline",
+   "utc": "2027-02-26T11:59:59+00:00",
+   "raw": "2027-02-25 23:59:59",
+   "tz": "UTC-12",
+   "link": "https://cvpr.thecvf.com/Conferences/2027"
+  },
+  {
+   "conf": "IROS",
+   "year": 2027,
+   "kind": "deadline",
+   "utc": "2027-03-02T11:59:59+00:00",
+   "raw": "2027-03-01 23:59:59",
+   "tz": "AoE",
+   "link": "https://2027.ieee-iros.org/"
+  }
+ ]
+}

@@ -159,11 +159,11 @@ def cmd_run(args) -> int:
                       "", *[f"- {e.name} {e.year} {KIND_KO.get(d.kind, d.kind)} {d.when_utc.astimezone(KST):%Y-%m-%d %H:%M} KST"
                             for e, d in upcoming[:15]]])
     # 메일이 실제로 나간 뒤에만 state 를 갱신한다 (실패 시 다음 실행에서 같은 소식을 다시 보냄)
-    if not mailer.configured():
-        log.error("SMTP 환경변수(SMTP_HOST/SMTP_USER/SMTP_PASS)가 없어 메일을 보낼 수 없음. "
-                  "미리보기만 하려면 --no-mail")
+    st = mailer.settings(cfg.get("mail", {}))
+    if mailer.missing(st):
+        log.error("메일 설정 누락: %s → 메일을 보낼 수 없음 (미리보기만 하려면 --no-mail)", ", ".join(mailer.missing(st)))
         return 1
-    mailer.send(subject, html_body, text, mailer.recipients(cfg.get("mail", {}).get("to", "")))
+    mailer.send(subject, html_body, text, st)
     save_state()
     return 0
 
