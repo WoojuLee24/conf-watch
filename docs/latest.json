@@ -1,23 +1,6 @@
 {
- "generated": "2026-10-17T05:45:31.803424+00:00",
- "new": [
-  "corl2026|arlo0o.github.io/grounded-driving-world-models_workshop",
-  "corl2026|corl2026-realworld-robot-learning.github.io",
-  "corl2026|efficient-embodied-ai.github.io",
-  "corl2026|robofinemani2026.github.io",
-  "corl2026|umi-olympics.airoa.io",
-  "iros2026|earth-rover-challenge.github.io",
-  "iros2026|frostlab.byu.edu/iig-workshop",
-  "iros2026|iros-2026-athletic-humanoid.github.io/workshop",
-  "iros2026|iros2026-race.roboracer.ai",
-  "iros2026|medcvr.github.io/forceps-manipulation-challenge",
-  "iros2026|ppniv.github.io",
-  "iros2026|robotic-origami-challenge.github.io",
-  "iros2026|rocochallenge.github.io/roco-iros2026",
-  "iros2026|socialnav2026.pages.dev",
-  "iros2026|uvsq.fr/the-volting-cup-at-iros-2026",
-  "nips2026|neurips.cc/virtual/2026/competition/137687"
- ],
+ "generated": "2026-10-17T05:56:04.586767+00:00",
+ "new": [],
  "challenges": [
   {
    "conf": "NeurIPS",
