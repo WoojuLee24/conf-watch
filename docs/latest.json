@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-19T02:54:54.626934+00:00",
+ "generated": "2026-10-26T02:50:10.846115+00:00",
  "new": [],
  "challenges": [
   {
@@ -258,11 +258,11 @@
    "snippet": "…it fails, and which capability should be improved. Our workshop brings together researchers in robot learning, manipulation, embodied AI, computer vision, and vision-language-action modeling to rethink how fine-grained robotic capabilities should be evaluated. The workshop is built around MetaFine , a diagnostic meta-evaluation framework t…",
    "source": "crawl",
    "start": "",
-   "end": "2026-10-21",
+   "end": "2026-10-23",
    "date_source": "site",
-   "end_strong": false,
+   "end_strong": true,
    "conf_start": "2026-11-09",
-   "status": "진행 중",
+   "status": "종료",
    "id": "corl2026|robofinemani2026.github.io"
   },
   {
@@ -369,8 +369,8 @@
    "conf": "AAAI",
    "year": 2027,
    "kind": "rebuttal_deadline",
-   "utc": "2026-10-26T11:59:59+00:00",
-   "raw": "2026-10-25 23:59:59",
+   "utc": "2026-11-01T11:59:59+00:00",
+   "raw": "2026-10-31 23:59:59",
    "tz": "UTC-12",
    "link": "https://aaai.org/conference/aaai/aaai-27/"
   },

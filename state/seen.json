@@ -33,7 +33,7 @@
   "aaai2027/abstract_deadline": "2026-07-21 23:59:59 UTC-12",
   "aaai2027/deadline": "2026-07-28 23:59:59 UTC-12",
   "aaai2027/decision_deadline": "2026-11-30 23:59:59 UTC-12",
-  "aaai2027/rebuttal_deadline": "2026-10-25 23:59:59 UTC-12",
+  "aaai2027/rebuttal_deadline": "2026-10-31 23:59:59 UTC-12",
   "corl2021/deadline": "2021-06-18 23:59:59 UTC-7",
   "corl2022/deadline": "TBD UTC-7",
   "corl2023/deadline": "2023-06-08 23:59:59 UTC-7",
@@ -133,5 +133,5 @@
   "rss2027/deadline": "2026-12-04 23:59:59 AoE",
   "rss2027/rebuttal_deadline": "2027-02-12 23:59:59 AoE"
  },
- "updated": "2026-10-19T02:54:54.626934+00:00"
+ "updated": "2026-10-26T02:50:10.846115+00:00"
 }
