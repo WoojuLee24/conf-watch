@@ -1,10 +1,12 @@
 {
  "challenges": {
   "corl2026|arlo0o.github.io/grounded-driving-world-models_workshop": "2026-10-17",
+  "corl2026|beneath-the-policy.github.io": "2026-11-02",
   "corl2026|corl2026-realworld-robot-learning.github.io": "2026-10-17",
   "corl2026|efficient-embodied-ai.github.io": "2026-10-17",
   "corl2026|robofinemani2026.github.io": "2026-10-17",
   "corl2026|umi-olympics.airoa.io": "2026-10-17",
+  "icra2027|ieee-ras.org": "2026-11-02",
   "iros2026|earth-rover-challenge.github.io": "2026-10-17",
   "iros2026|frostlab.byu.edu/iig-workshop": "2026-10-17",
   "iros2026|iros-2026-athletic-humanoid.github.io/workshop": "2026-10-17",
@@ -42,6 +44,8 @@
   "corl2025/deadline": "2025-04-30 23:59:59 AoE",
   "corl2026/abstract_deadline": "2026-05-25 23:59:59 AoE",
   "corl2026/deadline": "2026-05-28 23:59:59 AoE",
+  "corl2026/decision_deadline": "2026-09-04 23:59:59 AoE",
+  "corl2026/rebuttal_deadline": "2026-08-11 23:59:59 AoE",
   "cvpr2021/abstract_deadline": "2020-11-09 23:59:59 UTC-8",
   "cvpr2021/deadline": "2020-11-16 23:59:59 UTC-8",
   "cvpr2022/abstract_deadline": "2021-11-09 23:59:59 UTC-8",
@@ -102,7 +106,7 @@
   "icra2025/deadline": "2024-09-16 23:59:59 UTC-8",
   "icra2026/deadline": "2025-09-15 23:59:59 UTC-8",
   "icra2027/deadline": "2026-09-16 23:59:59 UTC-8",
-  "icra2027/decision_deadline": "2027-02-01 03:59:00 UTC-8",
+  "icra2027/decision_deadline": "2027-02-01 03:59:59 UTC-8",
   "iros2021/deadline": "2021-03-05 23:59:59 UTC-8",
   "iros2022/deadline": "2022-03-01 23:59:59 UTC-8",
   "iros2023/deadline": "2023-03-02 23:59:59 UTC-8",
@@ -120,8 +124,9 @@
   "nips2024/deadline": "2024-05-22 20:00:00 UTC+0",
   "nips2025/abstract_deadline": "2025-05-11 23:59:59 AoE",
   "nips2025/deadline": "2025-05-15 23:59:59 AoE",
-  "nips2026/abstract_deadline": "2026-05-05 11:59:00 UTC+0",
-  "nips2026/deadline": "2026-05-07 11:59:00 UTC+0",
+  "nips2026/abstract_deadline": "2026-05-05 11:59:59 UTC+0",
+  "nips2026/deadline": "2026-05-07 11:59:59 UTC+0",
+  "nips2026/decision_deadline": "2026-09-25 11:59:59 UTC+0",
   "rss2021/deadline": "2021-03-01 23:59:59 AoE",
   "rss2022/deadline": "TBD AoE",
   "rss2023/deadline": "2023-02-03 23:59:59 AoE",
@@ -131,7 +136,8 @@
   "rss2026/abstract_deadline": "2026-01-23 23:59:59 AoE",
   "rss2026/deadline": "2026-01-30 23:59:59 AoE",
   "rss2027/deadline": "2026-12-04 23:59:59 AoE",
+  "rss2027/decision_deadline": "2027-04-30 23:59:59 AoE",
   "rss2027/rebuttal_deadline": "2027-02-12 23:59:59 AoE"
  },
- "updated": "2026-10-26T02:50:10.846115+00:00"
+ "updated": "2026-11-02T03:58:17.879247+00:00"
 }
