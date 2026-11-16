@@ -1,10 +1,7 @@
 {
- "generated": "2026-11-09T04:14:35.452256+00:00",
+ "generated": "2026-11-16T04:25:13.874880+00:00",
  "new": [
-  "corl2026|actiongapworkshop.github.io",
-  "icra2027|emprise.cs.cornell.edu/phyrc/challenge-2027",
-  "icra2027|sites.google.com/view/rgmcomp?pli=1&authuser=0",
-  "nips2026|worldmodels-physicalai.com"
+  "icra2027|2027.ieee-icra.org/program/competitions"
  ],
  "challenges": [
   {
@@ -54,6 +51,28 @@
    "conf_start": "2026-12-08",
    "status": "기간 미확인",
    "id": "nips2026|worldmodels-physicalai.com"
+  },
+  {
+   "conf": "ICRA",
+   "conf_key": "icra",
+   "year": 2027,
+   "title": "Competitions",
+   "url": "https://2027.ieee-icra.org/program/competitions/",
+   "detail_url": "https://2027.ieee-icra.org/program/competitions/",
+   "keywords": [
+    "\\bnavigation\\b",
+    "manipulation"
+   ],
+   "platforms": [],
+   "snippet": "…l-based classical control to model-free reinforcement learning approaches. This series explicitly targets advanced research in robust control and terrain-aware navigation in “wild” environments using 3D visual slam sensing. PhyRC 2027: Physical Robotic Caregiving Challenge LINK TO WEBSITE Over one billion people worldwide requir…",
+   "source": "crawl",
+   "start": "",
+   "end": "2027-05-27",
+   "date_source": "site",
+   "end_strong": true,
+   "conf_start": "2027-05-24",
+   "status": "진행 중",
+   "id": "icra2027|2027.ieee-icra.org/program/competitions"
   },
   {
    "conf": "ICRA",
@@ -139,14 +158,14 @@
     "manipulation"
    ],
    "platforms": [],
-   "snippet": "…, distillation, adaptive compute, action chunking, hardware-aware design, edge-cloud systems, or safety and control under timing constraints, whether you build vision-language-action policies, world-action models, or something that does not fit either label. Contributed papers are non-archival ; submissions closed October 19 and acceptance…",
+   "snippet": "…8 papers Rolling-WAM: World Action Models with Rolling Imagination Yinghua Zhou et al. Group-Wise INT4 Prevents Quantization-Induced Plan Collapse in a Driving Vision-Language-Action Policy Justin Williams et al. Revisiting Open-Loop Execution in Robotics: Toward Reactive, Higher-Performing Policies Michael Zeng et al. Lost in Translation?…",
    "source": "crawl",
    "start": "2026-10-30",
    "end": "2026-11-12",
    "date_source": "site",
    "end_strong": true,
    "conf_start": "2026-11-09",
-   "status": "진행 중",
+   "status": "종료",
    "id": "corl2026|efficient-embodied-ai.github.io"
   },
   {
@@ -213,8 +232,8 @@
    "platforms": [],
    "snippet": "…1st Workshop on \"Structured Physical Intelligence\" (SPIN) Remember, Retrieve, Act: Memory for Robot Foundation Models Efficient Foundation Models for Real-Time Embodied AI Continually Self-Improving Robots Workshop (CSIR-2026) Learn@Deploy: Robot Learning at Deployment Pretrain to Adapt: What Makes a Pretrained Policy Adaptabl…",
    "source": "crawl",
-   "start": "2026-08-15",
-   "end": "",
+   "start": "",
+   "end": "2026-11-05",
    "date_source": "site",
    "end_strong": false,
    "conf_start": "2026-11-09",
@@ -267,20 +286,11 @@
    "date_source": "site",
    "end_strong": true,
    "conf_start": "2026-11-09",
-   "status": "진행 중",
+   "status": "종료",
    "id": "corl2026|umi-olympics.airoa.io"
   }
  ],
  "upcoming_deadlines": [
-  {
-   "conf": "CVPR",
-   "year": 2027,
-   "kind": "abstract_deadline",
-   "utc": "2026-11-11T11:59:59+00:00",
-   "raw": "2026-11-10 23:59:59",
-   "tz": "UTC-12",
-   "link": "https://cvpr.thecvf.com/Conferences/2027"
-  },
   {
    "conf": "CVPR",
    "year": 2027,
@@ -325,6 +335,24 @@
    "raw": "2026-12-16 23:59:59",
    "tz": "AoE",
    "link": "https://iclr.cc/Conferences/2027"
+  },
+  {
+   "conf": "ICML",
+   "year": 2027,
+   "kind": "abstract_deadline",
+   "utc": "2027-01-15T11:59:59+00:00",
+   "raw": "2027-01-14 23:59:59",
+   "tz": "AoE",
+   "link": "https://icml.cc/Conferences/2027"
+  },
+  {
+   "conf": "ICML",
+   "year": 2027,
+   "kind": "deadline",
+   "utc": "2027-01-23T11:59:59+00:00",
+   "raw": "2027-01-22 23:59:59",
+   "tz": "AoE",
+   "link": "https://icml.cc/Conferences/2027"
   },
   {
    "conf": "ICRA",
@@ -379,6 +407,15 @@
    "raw": "2027-04-30 23:59:59",
    "tz": "AoE",
    "link": "https://roboticsconference.org/"
+  },
+  {
+   "conf": "ICML",
+   "year": 2027,
+   "kind": "decision_deadline",
+   "utc": "2027-05-04T11:59:59+00:00",
+   "raw": "2027-05-03 23:59:59",
+   "tz": "AoE",
+   "link": "https://icml.cc/Conferences/2027"
   }
  ]
 }

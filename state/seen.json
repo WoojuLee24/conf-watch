@@ -7,6 +7,7 @@
   "corl2026|efficient-embodied-ai.github.io": "2026-10-17",
   "corl2026|robofinemani2026.github.io": "2026-10-17",
   "corl2026|umi-olympics.airoa.io": "2026-10-17",
+  "icra2027|2027.ieee-icra.org/program/competitions": "2026-11-16",
   "icra2027|emprise.cs.cornell.edu/phyrc/challenge-2027": "2026-11-09",
   "icra2027|ieee-ras.org": "2026-11-02",
   "icra2027|sites.google.com/view/rgmcomp?pli=1&authuser=0": "2026-11-09",
@@ -103,7 +104,9 @@
   "icml2025/deadline": "2025-01-30 23:59:59 UTC-12",
   "icml2026/abstract_deadline": "2026-01-24 11:59:59 UTC+0",
   "icml2026/deadline": "2026-01-29 11:59:59 UTC+0",
-  "icml2027/deadline": "TBD AoE",
+  "icml2027/abstract_deadline": "2027-01-14 23:59:59 AoE",
+  "icml2027/deadline": "2027-01-22 23:59:59 AoE",
+  "icml2027/decision_deadline": "2027-05-03 23:59:59 AoE",
   "icra2021/deadline": "2020-10-31 23:59:59 AoE",
   "icra2022/deadline": "2021-09-15 23:59:59 UTC-7",
   "icra2023/deadline": "2022-09-15 23:59:59 UTC-8",
@@ -144,5 +147,5 @@
   "rss2027/decision_deadline": "2027-04-30 23:59:59 AoE",
   "rss2027/rebuttal_deadline": "2027-02-12 23:59:59 AoE"
  },
- "updated": "2026-11-09T04:14:35.452256+00:00"
+ "updated": "2026-11-16T04:25:13.874880+00:00"
 }
