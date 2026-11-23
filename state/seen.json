@@ -6,6 +6,7 @@
   "corl2026|corl2026-realworld-robot-learning.github.io": "2026-10-17",
   "corl2026|efficient-embodied-ai.github.io": "2026-10-17",
   "corl2026|robofinemani2026.github.io": "2026-10-17",
+  "corl2026|spais-ws.org": "2026-11-23",
   "corl2026|umi-olympics.airoa.io": "2026-10-17",
   "icra2027|2027.ieee-icra.org/program/competitions": "2026-11-16",
   "icra2027|emprise.cs.cornell.edu/phyrc/challenge-2027": "2026-11-09",
@@ -22,6 +23,7 @@
   "iros2026|socialnav2026.pages.dev": "2026-10-17",
   "iros2026|uvsq.fr/the-volting-cup-at-iros-2026": "2026-10-17",
   "nips2026|neurips.cc/virtual/2026/competition/137687": "2026-10-17",
+  "nips2026|robosyn-bench.net/#/workshop": "2026-11-23",
   "nips2026|worldmodels-physicalai.com": "2026-11-09"
  },
  "deadlines": {
@@ -132,9 +134,10 @@
   "nips2024/deadline": "2024-05-22 20:00:00 UTC+0",
   "nips2025/abstract_deadline": "2025-05-11 23:59:59 AoE",
   "nips2025/deadline": "2025-05-15 23:59:59 AoE",
-  "nips2026/abstract_deadline": "2026-05-05 11:59:00 UTC+0",
+  "nips2026/abstract_deadline": "2026-05-05 11:59:59 UTC+0",
   "nips2026/deadline": "2026-05-07 11:59:59 UTC+0",
   "nips2026/decision_deadline": "2026-09-25 11:59:59 UTC+0",
+  "nips2026/rebuttal_deadline": "2026-08-04 11:59:59 UTC+0",
   "rss2021/deadline": "2021-03-01 23:59:59 AoE",
   "rss2022/deadline": "TBD AoE",
   "rss2023/deadline": "2023-02-03 23:59:59 AoE",
@@ -147,5 +150,5 @@
   "rss2027/decision_deadline": "2027-04-30 23:59:59 AoE",
   "rss2027/rebuttal_deadline": "2027-02-12 23:59:59 AoE"
  },
- "updated": "2026-11-16T04:25:13.874880+00:00"
+ "updated": "2026-11-23T05:21:03.820221+00:00"
 }

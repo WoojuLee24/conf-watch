@@ -1,7 +1,8 @@
 {
- "generated": "2026-11-16T04:25:13.874880+00:00",
+ "generated": "2026-11-23T05:21:03.820221+00:00",
  "new": [
-  "icra2027|2027.ieee-icra.org/program/competitions"
+  "corl2026|spais-ws.org",
+  "nips2026|robosyn-bench.net/#/workshop"
  ],
  "challenges": [
   {
@@ -9,7 +10,7 @@
    "conf_key": "nips",
    "year": 2026,
    "title": "RoboSynChallenge: Mastering Real-World Dexterity via Generalizing Synthesized Manipulation Skills",
-   "url": "https://neurips.cc/virtual/2026/competition/137687",
+   "url": "https://robosyn-bench.net/#/workshop",
    "detail_url": "https://neurips.cc/virtual/2026/competition/137687",
    "keywords": [
     "vision-language-action",
@@ -25,7 +26,7 @@
    "end_strong": false,
    "conf_start": "2026-12-08",
    "status": "기간 미확인",
-   "id": "nips2026|neurips.cc/virtual/2026/competition/137687"
+   "id": "nips2026|robosyn-bench.net/#/workshop"
   },
   {
    "conf": "NeurIPS",
@@ -189,7 +190,7 @@
    "date_source": "site",
    "end_strong": false,
    "conf_start": "2026-11-09",
-   "status": "기간 미확인",
+   "status": "종료",
    "id": "corl2026|beneath-the-policy.github.io"
   },
   {
@@ -237,7 +238,7 @@
    "date_source": "site",
    "end_strong": false,
    "conf_start": "2026-11-09",
-   "status": "기간 미확인",
+   "status": "종료",
    "id": "corl2026|arlo0o.github.io/grounded-driving-world-models_workshop"
   },
   {
@@ -261,8 +262,35 @@
    "date_source": "site",
    "end_strong": false,
    "conf_start": "2026-11-09",
-   "status": "기간 미확인",
+   "status": "종료",
    "id": "corl2026|actiongapworkshop.github.io"
+  },
+  {
+   "conf": "CoRL",
+   "conf_key": "corl",
+   "year": 2026,
+   "title": "The Science of Physical AI Safety Workshop (SPAIS)",
+   "url": "https://spais-ws.org",
+   "detail_url": "https://spais-ws.org",
+   "keywords": [
+    "vision-language navigation",
+    "VLN",
+    "vision-language-action",
+    "VLA",
+    "embodied",
+    "\\bnavigation\\b",
+    "manipulation"
+   ],
+   "platforms": [],
+   "snippet": "…'s success from 0.16 to 0.90 under 400 ms latency, while remaining safer than a linear-calibration baseline. OpenReview PDF Poster Spotlight What do VLM-Based Vision-Language Navigation Models Rely on: Interpreting and Steering Policies Débora Oliveira Makowski, Samiran Gode, Abhijeet Nayak, Marco Hutter, Cordelia Schmid, Lukas Rosenberger Sch…",
+   "source": "crawl",
+   "start": "",
+   "end": "2026-10-11",
+   "date_source": "site",
+   "end_strong": false,
+   "conf_start": "2026-11-09",
+   "status": "종료",
+   "id": "corl2026|spais-ws.org"
   },
   {
    "conf": "CoRL",
@@ -291,24 +319,6 @@
   }
  ],
  "upcoming_deadlines": [
-  {
-   "conf": "CVPR",
-   "year": 2027,
-   "kind": "deadline",
-   "utc": "2026-11-17T11:59:59+00:00",
-   "raw": "2026-11-16 23:59:59",
-   "tz": "UTC-12",
-   "link": "https://cvpr.thecvf.com/Conferences/2027"
-  },
-  {
-   "conf": "ICLR",
-   "year": 2027,
-   "kind": "rebuttal_deadline",
-   "utc": "2026-11-19T11:59:59+00:00",
-   "raw": "2026-11-18 23:59:59",
-   "tz": "AoE",
-   "link": "https://iclr.cc/Conferences/2027"
-  },
   {
    "conf": "AAAI",
    "year": 2027,
